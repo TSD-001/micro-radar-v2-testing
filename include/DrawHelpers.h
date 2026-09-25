@@ -17,7 +17,7 @@ void DrawScanLines(LGFX_Sprite& buf, const int x0, const int y0, const int x1, c
 
     // solid gradient trail using RGB332-friendly levels
     const int totalWidth = thickness * spacing;
-    const int numBands = 6;
+    const int numBands = 3;
     const uint8_t levels[] = { 146, 109, 73, 55, 36, 18 };
     int bandWidth = totalWidth / numBands;
 

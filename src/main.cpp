@@ -12,9 +12,20 @@
 #include "DrawHelpers.h"
 #include "models/Aircraft.h"
 #include "models/TrackedAircraft.h"
+#include "BackgroundImage.h"
 
 constexpr int SCREEN_SIZE = 240;
 constexpr int SCREEN_SIZE_DIV_2 = (SCREEN_SIZE / 2);
+
+static_assert(
+    BACKGROUND_IMAGE_WIDTH == SCREEN_SIZE,
+    "Background image width must match the display."
+);
+
+static_assert(
+    BACKGROUND_IMAGE_HEIGHT == SCREEN_SIZE,
+    "Background image height must match the display."
+);
 
 LGFX tft;
 LGFX_Sprite backbuffer(&tft);
@@ -95,7 +106,13 @@ void loop()
   aircraftManager.Update();
 
   // draw cycle
-  backbuffer.fillScreen(lgfx::color888(0, 0, 0));
+  backbuffer.pushImage(
+    0,
+    0,
+    BACKGROUND_IMAGE_WIDTH,
+    BACKGROUND_IMAGE_HEIGHT,
+    BackgroundImage
+);
 
   float sweepAngle = fmod(millis() / 3000.0f, 2.0f * PI);
 
@@ -106,7 +123,7 @@ void loop()
       SCREEN_SIZE_DIV_2 - 1,
       SCREEN_SIZE_DIV_2 - 1 + (std::cos(sweepAngle) * SCREEN_SIZE_DIV_2),
       SCREEN_SIZE_DIV_2 - 1 + (std::sin(sweepAngle) * SCREEN_SIZE_DIV_2),
-      20, 128, 5
+      3, 128, 3
     );
   }
 
