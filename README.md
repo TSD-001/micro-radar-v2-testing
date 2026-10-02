@@ -1,9 +1,16 @@
 <h1 align=center>
-  📡 Micro Radar v2 - Destination Included
+  Micro Radar v2 testing - Experimental version (NOT CURRENTLY WORKING)
 </h1>
-<h6 align=center>
+
+  Fork notes:
+  - attempt to add background images
+  - possible futher future mods
+  - forked by someone who doesn't have a clue what they're doing with either Github or firmware development (got to start somewhere, right?) - so it's not recommended to run this version
+
+  Rest of description from original repo and N B-M fork.
+
   a tiny open-source flight radar for your desk
-</h6>
+
 <p align=center>
   <img src="radar%20latest.png" alt="micro radar v2" width="400"/>
 </p>
