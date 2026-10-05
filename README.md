@@ -4,8 +4,15 @@
 
   Fork notes:
   - attempt to add background images
+  - radar sweep graphics modified to display better over image background (just parameter changes, no function changes)
   - possible futher future mods
   - forked by someone who doesn't have a clue what they're doing with either Github or firmware development (got to start somewhere, right?) - so it's not recommended to run this version
+
+  Any image used:
+  - replaces the placeholder in the assets folder
+  - needs to be 240px square
+  - gets processed during firmware upload - to change image, replace asset then reupload firmware. This adds a bit of time to the upload but not a lot.
+  - ideally pre-process (e.g. in an image editor) to significantly darken the original image. I used a clip from Google Maps to test and turned the brightness right down until the image was almost black - this gives a much more "radar-like" image and makes the text and radar sweep still visible
 
   Rest of description from original repo and N B-M fork.
 
