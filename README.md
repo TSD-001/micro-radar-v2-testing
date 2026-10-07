@@ -1,20 +1,28 @@
 <h1 align=center>
-  Micro Radar v2 testing - Experimental version (NOT CURRENTLY WORKING)
+  Micro Radar testing - Experimental version, use at own risk
 </h1>
 
-  Board used: fbba0074-001
+  Board used: fbba0074-001. These are available under several brand names.
   
   Fork notes:
-  - attempt to add background images
+  - attempt to add background map generated from OSM data
+  - selectively uses OSM data to show runways (light grey), airport infrastructure (dark grey) and major roads (dark green)
   - radar sweep graphics modified to display better over image background (just parameter changes, no function changes)
   - possible futher future mods
-  - forked by someone who doesn't have a clue what they're doing with either Github or firmware development (got to start somewhere, right?) - so it's not recommended to run this version
+  - developed using AI (sorry about that)
+  - forked by someone who doesn't have a clue what they're doing with either Github or firmware development (got to start somewhere, right?) - so it's not recommended to run this version if you expect it to work first time
 
-  Any image used:
-  - replaces the placeholder in the assets folder
-  - needs to be 240px square
-  - gets processed during firmware upload - to change image, replace asset then reupload firmware. This adds a bit of time to the upload but not a lot.
-  - ideally pre-process (e.g. in an image editor) to significantly darken the original image. I used a clip from Google Maps to test and turned the brightness right down until the image was almost black - this gives a much more "radar-like" image and makes the text and radar sweep still visible
+How it works (it's a bit janky):
+  - run the inital setup as per Nicholas B-M's original repo, including connecting to WiFi and setting lat and long, and make sure it's working properly and covering the area you want to cover
+  - clone this repo locally and open in VScode (might also works in other git terminals, this is the only one I've tested)
+  - in root folder, run > python scripts/generate_map_background.py --latitude 01.234567 --longitude -0.123456 --radius-km 12
+  - in the above python command, replace lat, long and radius values with those matching your existing setup through the "Configure Micro Radar" webpage from the initial setup. Otherwise your map and data won't line up.
+  - this should generate a 'BackgroundImage.h' file in the 'include' folder
+  - next, run > python scripts/generate_map_background.py
+  - this should generate a 240px square image in the 'assets' folder, derived from the data in 'BackgroundImage.h'
+  - build and upload the project
+  - tada! Hopefully.
+  - alternatively you can just make your own background image manually, call it "background.png", stick it in the assets folder and it'll show that instead
 
   Mapping uses OpenStreetMap data: (c) OpenStreetMap contributors, ODbL 1.0
 
