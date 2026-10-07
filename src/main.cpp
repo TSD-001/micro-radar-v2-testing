@@ -37,6 +37,30 @@ OpenSkyAuthTokenHandler authHandler(http);
 
 AircraftManager aircraftManager(configServer, authHandler, http, tft);
 
+
+void ShowSplashScreen()
+{
+  constexpr unsigned long SPLASH_DURATION_MS = 10000;
+
+  tft.fillScreen(lgfx::color888(0, 0, 0));
+  tft.setTextDatum(lgfx::textdatum_t::middle_center);
+
+  tft.setTextColor(lgfx::color888(0, 255, 0));
+  tft.setTextSize(3);
+  tft.drawString("Micro Radar", SCREEN_SIZE_DIV_2, 90);
+
+  tft.setTextColor(lgfx::color888(160, 160, 160));
+  tft.setTextSize(1);
+  tft.drawString("Map data (c) OpenStreetMap contributors", SCREEN_SIZE_DIV_2, 155);
+  tft.drawString("openstreetmap.org/copyright", SCREEN_SIZE_DIV_2, 173);
+
+  delay(SPLASH_DURATION_MS);
+
+  // Restore conventional defaults for any later direct-to-display text.
+  tft.setTextSize(1);
+  tft.setTextDatum(lgfx::textdatum_t::top_left);
+}
+
 void setup()
 {
   Serial.begin(115200);
@@ -94,6 +118,9 @@ void setup()
 
   // initialise aircraft manager
   aircraftManager.Initialise();
+
+  // Show attribution immediately before entering the main radar display.
+  ShowSplashScreen();
 }
 
 void loop()
