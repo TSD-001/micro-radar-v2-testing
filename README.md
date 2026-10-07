@@ -2,6 +2,8 @@
   Micro Radar v2 testing - Experimental version (NOT CURRENTLY WORKING)
 </h1>
 
+  Board used: fbba0074-001
+  
   Fork notes:
   - attempt to add background images
   - radar sweep graphics modified to display better over image background (just parameter changes, no function changes)
@@ -13,6 +15,8 @@
   - needs to be 240px square
   - gets processed during firmware upload - to change image, replace asset then reupload firmware. This adds a bit of time to the upload but not a lot.
   - ideally pre-process (e.g. in an image editor) to significantly darken the original image. I used a clip from Google Maps to test and turned the brightness right down until the image was almost black - this gives a much more "radar-like" image and makes the text and radar sweep still visible
+
+  Mapping uses OpenStreetMap data: (c) OpenStreetMap contributors, ODbL 1.0
 
   Rest of description from original repo and N B-M fork.
 
