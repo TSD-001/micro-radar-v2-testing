@@ -72,3 +72,4 @@ nbproject
 .vscode
 assets/background.png
 include/backgroundimage.h
+.cache
